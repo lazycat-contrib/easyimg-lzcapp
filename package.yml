@@ -1,0 +1,15 @@
+package: community.lazycat.app.easyimg
+version: 1.2.2
+name: EasyImg
+description: 适用于个人的一站式图床服务. 支持开启公共上传，支持部署AI鉴黄智能检测，完善的权限控制、数据统计、实时推送等功能。
+homepage: https://github.com/chaos-zhu/easyimg
+author: chaos-zhu
+license: Apache-2.0
+min_os_version: 1.5.0
+locales:
+  zh:
+    name: EasyImg
+    description: 适用于个人的一站式图床服务，支持公共上传、AI 鉴黄、权限控制、数据统计和实时推送。
+  en:
+    name: EasyImg
+    description: Personal image hosting with optional public uploads, AI content moderation integrations, access control, statistics and notifications.

@@ -1,0 +1,29 @@
+application:
+  subdomain: easyimg
+  background_task: true
+  multi_instance: false
+  public_path:
+    - /
+  upstreams:
+    - location: /
+      backend: http://easyimg:3000/
+services:
+  easyimg:
+    # upstream: ghcr.io/chaos-zhu/easyimg:1.2.2
+    image: ghcr.1ms.run/chaos-zhu/easyimg:1.2.2
+    environment:
+      - NODE_ENV=production
+      - HOST=0.0.0.0
+      - PORT=3000
+    binds:
+      - /lzcapp/var/db:/app/db
+      - /lzcapp/var/uploads:/app/uploads
+usage: |
+  默认用户名：easyimg
+  默认密码：easyimg
+  首次登录后请立即修改默认用户名和密码，再分享应用地址。
+  本应用允许访客访问以支持图片外链和公共上传页面，后台操作由 EasyImg 自身鉴权。
+  公共上传是否启用、格式大小限制和访问控制请在应用设置中配置。
+  数据库和上传图片分别保存在 /lzcapp/var/db 与 /lzcapp/var/uploads，备份时请同时保留两者。
+  AI 鉴黄需要自行配置受支持的检测服务；本包未附带额外检测容器。
+  保留手动登录，不注入文件选择器。

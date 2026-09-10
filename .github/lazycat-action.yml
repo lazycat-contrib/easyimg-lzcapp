@@ -1,0 +1,35 @@
+version: 1
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: dist/application.lpk
+  target_arch: amd64
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: easyimg
+build:
+  toolchains: []
+  run_buildscript: false
+images:
+  - id: easyimg
+    target: service
+    service: easyimg
+    source: ghcr.io/chaos-zhu/easyimg
+    channel: stable
+    sort: semver
+    tag_regex: '^[0-9]+\.[0-9]+\.[0-9]+$'
+    delivery:
+      mode: mirror
+      require_digest_match: true
+stores:
+  official:
+    enabled: false
+  private:
+    enabled: true
+    skip_if_version_exists: true
+    name: EasyImg
+    summary: 适用于个人的一站式图床服务. 支持开启公共上传，支持部署AI鉴黄智能检测，完善的权限控制、数据统计、实时推送等功能。
